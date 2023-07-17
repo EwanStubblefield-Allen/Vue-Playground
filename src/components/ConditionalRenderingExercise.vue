@@ -10,7 +10,7 @@
             screen.
           </p>
           <!-- add code to element below -->
-          <div class="player-card text-center">
+          <div v-if="true" class="player-card text-center">
             <div>
               <img :src="state.player.photo" />
             </div>
@@ -38,7 +38,7 @@
             toggle the value to true to get it to show up again.
           </p>
           <!-- add code to element below -->
-          <div class="player-card text-center">
+          <div v-if="state.showPlayer" class="player-card text-center">
             <div>
               <img :src="state.player.photo" />
             </div>
@@ -67,23 +67,23 @@
             to add another condition.
           </p>
           <!-- v-if comparing grade and 90 -->
-          <div>
+          <div v-if="state.grade >= 90">
             <p>The grade is 'A'.</p>
           </div>
           <!-- v-else-if comparing grade and 80 -->
-          <div>
+          <div v-else-if="state.grade >= 80">
             <p>The grade is 'B'.</p>
           </div>
           <!-- v-else-if comparing grade and 70 -->
-          <div>
+          <div v-else-if="state.grade >= 70">
             <p>The grade is 'C'.</p>
           </div>
           <!-- v-else-if comparing grade and 60 -->
-          <div>
+          <div v-else-if="state.grade >= 60">
             <p>The grade is 'D'.</p>
           </div>
           <!-- v-else to display if all the others fail -->
-          <div>
+          <div v-else>
             <p>The grade is 'F'.</p>
           </div>
         </div>
@@ -93,7 +93,7 @@
             Change the v-if directive to a v-show on the "player-card" element
             below.
           </p>
-          <div class="player-card text-center area" v-show="state.player.id">
+          <div class="player-card text-center area" v-show="true">
             <div>
               <img :src="state.player.photo" />
             </div>
@@ -130,7 +130,9 @@ export default {
     // NOTE typically state will be abstracted to a global AppState
     const state = reactive({
       //add a property to toggle the player-card here.
+      showPlayer: true,
       //add a property to set the number value here.
+      grade: 90,
       player: {
         photo: "https://robohash.org/Mick",
         name: "Mick",
@@ -147,14 +149,14 @@ export default {
 
 
 <style scoped>
-.player-card {
-  border: 1px solid rgba(154, 154, 156, 0.4);
-  background-color: rgba(154, 154, 156, 0.4);
-  margin: 1rem;
-  border-radius: 5px;
-}
+  .player-card {
+    border: 1px solid rgba(154, 154, 156, 0.4);
+    background-color: rgba(154, 154, 156, 0.4);
+    margin: 1rem;
+    border-radius: 5px;
+  }
 
-.img {
-  height: 10rem;
-}
+  .img {
+    height: 10rem;
+  }
 </style>
